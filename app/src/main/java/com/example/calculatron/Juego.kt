@@ -31,6 +31,7 @@ class Juego : AppCompatActivity() {
         bind.textoAcertadas.text = getString(R.string.acertadas_juego, acertadas)
         bind.textoFalladas.text = getString(R.string.falladas_juego, falladas)
 
+        //Contador
         countDownTimer = object : CountDownTimer(contadormili.toLong(), 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 // Actualiza el TextView en cada tick
@@ -45,7 +46,6 @@ class Juego : AppCompatActivity() {
             }
         }
 
-        // Inicia el contador
 
 
     }
