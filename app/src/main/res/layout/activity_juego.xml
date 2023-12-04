@@ -25,6 +25,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/texto_acertadas" />
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ajustes"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="20dp"
+        android:onClick="ajustes"
+        />
+
+
     <TextView
         android:id="@+id/operacion_anterior"
         android:layout_width="match_parent"
