@@ -41,8 +41,8 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/texto_falladas"
-        app:layout_constraintBottom_toTopOf="@id/botones"
+        app:layout_constraintTop_toBottomOf="@id/operacion_anterior"
+        app:layout_constraintBottom_toTopOf="@id/operacion_siguiente"
         android:id="@+id/operacion_actual"
         android:layout_margin="30dp"
         android:text="Operacion actual"

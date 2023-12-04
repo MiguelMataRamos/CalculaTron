@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="cuenta_atras">15</string>
+    <string name="minimo">0</string>
+    <string name="maximo">20</string>
+
+    <bool name="suma">false</bool>
+    <bool name="resta">false</bool>
+    <bool name="multiplicacion">false</bool>
+    <bool name="division">false</bool>
+
+    <string name="acertadas_anterior"></string>
+    <string name="falladas_anterior"></string>
+    <string name="acertadas_actual"></string>
+    <string name="falladas_actual"></string>
+</resources>

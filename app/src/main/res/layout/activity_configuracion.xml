@@ -14,8 +14,10 @@
         app:layout_constraintStart_toStartOf="parent"
         android:text="Configuracion"
         android:gravity="center"
-        android:padding="10dp"
+        android:padding="20dp"
         android:textSize="20sp"
+        android:background="@color/black"
+        android:textColor="@color/white"
         />
 
     <com.google.android.material.textfield.TextInputLayout
@@ -24,6 +26,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/confi"
         android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="20dp"
         >
 
         <com.google.android.material.textfield.TextInputEditText
@@ -32,9 +35,8 @@
             android:layout_height="match_parent"
             android:inputType="number"
             android:hint="Cuenta atras"
-            style="@style/ThemeOverlay.Material3.TextInputEditText.OutlinedBox.Dense"
-            android:background="#4B005048"
             android:textColor="@color/black"
+            android:text="@string/cuenta_atras"
             />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -46,7 +48,7 @@
         app:layout_constraintTop_toBottomOf="@+id/lcuenta"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/lmax"
-        android:layout_marginStart="10dp"
+        android:layout_margin="10dp"
         >
 
         <com.google.android.material.textfield.TextInputEditText
@@ -55,10 +57,9 @@
             android:layout_height="match_parent"
             android:inputType="number"
             android:hint="Minimo"
-            android:background="#4B005048"
             android:textColor="@color/black"
             android:layout_marginEnd="5dp"
-            style="@style/ThemeOverlay.Material3.TextInputEditText.OutlinedBox.Dense"
+            android:text="@string/minimo"
             />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -71,6 +72,8 @@
         app:layout_constraintStart_toEndOf="@id/lmin"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginEnd="10dp"
+        android:layout_margin="10dp"
+
         >
 
         <com.google.android.material.textfield.TextInputEditText
@@ -79,10 +82,9 @@
             android:layout_height="match_parent"
             android:inputType="number"
             android:hint="Maximo"
-            style="@style/ThemeOverlay.Material3.TextInputEditText.OutlinedBox.Dense"
-            android:background="#4B005048"
             android:textColor="@color/black"
             android:layout_marginStart="5dp"
+            android:text="@string/maximo"
             />
 
     </com.google.android.material.textfield.TextInputLayout>
