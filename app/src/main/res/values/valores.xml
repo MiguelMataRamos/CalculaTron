@@ -17,6 +17,6 @@
     <string name="acertadas_actual"></string>
     <string name="falladas_actual"></string>
     <string name="operacion_anterior">Operacion anterior</string>
-    <string name="operacion_actual">Operacion actual =</string>
+    <string name="operacion_actual">%s = </string>
     <string name="siguiente_operacion">Siguiente operacion</string>
 </resources>
