@@ -8,6 +8,15 @@
 
 
     <TextView
+        android:id="@+id/textContador"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Contador: 10"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
         android:id="@+id/texto_acertadas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
