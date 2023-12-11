@@ -21,7 +21,7 @@ class Juego : AppCompatActivity() {
     private var falladas = 0
     private var contadorempezado = false
 
-    private lateinit var operaciones : MutableList<String>
+    private lateinit var operaciones: MutableList<String>
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,20 +30,20 @@ class Juego : AppCompatActivity() {
 
         operaciones = mutableListOf()
 
-        var suma = sp.getBoolean("suma",true)
-        if (suma){
+        var suma = sp.getBoolean("suma", true)
+        if (suma) {
             operaciones.add("+")
         }
-        var resta = sp.getBoolean("resta",true)
-        if (resta){
+        var resta = sp.getBoolean("resta", true)
+        if (resta) {
             operaciones.add("-")
         }
-        var multi = sp.getBoolean("multiplicacion",true)
-        if (multi){
+        var multi = sp.getBoolean("multiplicacion", true)
+        if (multi) {
             operaciones.add("*")
         }
-        var divi = sp.getBoolean("division",true)
-        if (divi){
+        var divi = sp.getBoolean("division", true)
+        if (divi) {
             operaciones.add("/")
         }
 
@@ -54,8 +54,8 @@ class Juego : AppCompatActivity() {
         bind.textContador.text = contador.toString()
         contadormili = contador * 1000
 
-        bind.textoAcertadas.text = getString(R.string.acertadas_juego, acertadas)
-        bind.textoFalladas.text = getString(R.string.falladas_juego, falladas)
+        bind.textoAcertadas.text = getString(R.string.acertadas_juegoDEF, acertadas)
+        bind.textoFalladas.text = getString(R.string.falladas_juegoDEF, falladas)
 
 
         //Contador
@@ -72,35 +72,104 @@ class Juego : AppCompatActivity() {
                 startActivity(intent)
             }
         }
-
-        generarOperacion()
+        bind.operacionActual.text = generarOperacion()
+        siguienteOperacion()
 
     }
 
-    private fun generarOperacion(){
+    private fun generarOperacion(): String {
 
         val random = Random()
         var operacion = operaciones.random()
 
-        val min = sp.getString("minimo","0")!!.toInt()
-        val max = sp.getString("maximo","100")!!.toInt()
+        val min = sp.getString("minimo", "0")!!.toInt()
+        val max = sp.getString("maximo", "100")!!.toInt()
 
-        val n1 = random.nextInt(max-min)+min
-        val n2 = random.nextInt(max-min)+min
+        val n1 = random.nextInt(max - min) + min
+        val n2 = random.nextInt(max - min) + min
 
-        var res = n1.toString() + operacion + n2.toString()
-
-        var res2 = getString(R.string.operacion_actual,res)
-
-        sp.edit().apply {
-            putString("operacion_actual",res2)
-            apply()
-        }
-
-        bind.operacionActual.text = sp.getString("operacion_actual",res2)
+        return n1.toString() + operacion + n2.toString()
 
     }
 
+    private fun operacionPasada() {
+        bind.operacionAnterior.text = sp.getString("operacion_actual", "0")
+
+        sp.edit().apply {
+            putString("operacion_anterior", sp.getString("operacion_actual", "0"))
+            apply()
+        }
+
+    }
+
+    private fun operacionActual() {
+
+        sp.edit().apply {
+            putString("operacion_actual", sp.getString("siguiente_operacion", "0"))
+            apply()
+        }
+
+        bind.operacionActual.text = sp.getString("operacion_actual", "0") + "="
+
+    }
+
+    private fun siguienteOperacion() {
+
+        var res = generarOperacion()
+
+        sp.edit().apply {
+            putString("siguiente_operacion", res)
+            apply()
+        }
+
+        bind.operacionSiguiente.text = sp.getString("siguiente_operacion", "0")
+
+    }
+
+    private fun rotacion() {
+        operacionPasada()
+        operacionActual()
+        siguienteOperacion()
+    }
+
+    private fun comprobarResultado(op: String, res: Int): Boolean {
+        var numeros: List<String>
+        var total: Int = 0
+
+        if (op.contains("+")) {
+            numeros = op.split("+")
+            total = numeros[0].toInt() + numeros[1].toInt()
+        }
+
+        if (op.contains("-")) {
+            numeros = op.split("-")
+            total = numeros[0].toInt() - numeros[1].toInt()
+        }
+
+        if (op.contains("*")) {
+            numeros = op.split("*")
+            total = numeros[0].toInt() * numeros[1].toInt()
+        }
+
+        if (op.contains("/")) {
+            numeros = op.split("/")
+            total = numeros[0].toInt() / numeros[1].toInt()
+        }
+
+        var iguales = false
+
+        if (res == total){
+            acertadas++
+        }else{
+            falladas++
+        }
+
+        bind.textoAcertadas.text = getString(R.string.acertadas_juegoDEF, acertadas)
+        bind.textoFalladas.text = getString(R.string.falladas_juegoDEF, falladas)
+
+        return iguales
+
+    }
 
 
     fun ajustes(view: View) {
@@ -172,9 +241,16 @@ class Juego : AppCompatActivity() {
             }
 
             R.id.bigual -> {
-                if (!contadorempezado){
+                if (!contadorempezado) {
                     countDownTimer.start()
                     contadorempezado = true
+                }
+                if (!bind.respuesta.text.isNullOrBlank()){
+                    rotacion()
+
+
+
+                    bind.respuesta.text = null
                 }
 
 
@@ -182,7 +258,7 @@ class Juego : AppCompatActivity() {
 
             R.id.bc -> {
                 var respuesta = bind.respuesta.text.toString()
-                respuesta = respuesta.substring(0,respuesta.length-1)
+                respuesta = respuesta.substring(0, respuesta.length - 1)
                 bind.respuesta.text = respuesta
             }
 
@@ -191,8 +267,6 @@ class Juego : AppCompatActivity() {
             }
         }
     }
-
-
 
 
 }

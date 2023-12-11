@@ -22,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="@string/acertadas_juego"
+        android:text="@string/acertadas_juegoDEF"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textContador" />
 
@@ -31,7 +31,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="@string/falladas_juego"
+        android:text="@string/falladas_juegoDEF"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/texto_acertadas" />
 
@@ -67,19 +67,19 @@
         android:text="@string/operacion_actual"
         android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@id/operacion_siguiente"
-        app:layout_constraintEnd_toStartOf="@+id/respuesta"
-        app:layout_constraintStart_toStartOf="@id/operacion_anterior"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/operacion_anterior" />
 
     <TextView
         android:id="@+id/respuesta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20dp"
+        android:textSize="25sp"
         app:layout_constraintBottom_toTopOf="@id/operacion_siguiente"
-        app:layout_constraintEnd_toEndOf="@id/operacion_anterior"
         app:layout_constraintStart_toEndOf="@id/operacion_actual"
-        app:layout_constraintTop_toBottomOf="@id/operacion_anterior" />
+        app:layout_constraintTop_toBottomOf="@id/operacion_anterior"
+        android:layout_marginStart="10dp"/>
 
     <TextView
         android:id="@+id/operacion_siguiente"

@@ -13,8 +13,10 @@
     <bool name="multiplicacionDEF">false</bool>
     <bool name="divisionDEF">false</bool>
 
-    <string name="acertadas_juego">Acertadas -> %d</string>
-    <string name="falladas_juego">Falladas -> %d</string>
+    <string name="acertadas_juegoDEF">Acertadas -> %d</string>
+    <string name="falladas_juegoDEF">Falladas -> %d</string>
+    <integer name="acertadas_juego"></integer>
+    <integer name="falladas_juego"></integer>
 
     <string name="acertadas_anterior"></string>
     <string name="falladas_anterior"></string>
