@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="cuenta_atras">25</string>
-    <string name="minimo">0</string>
-    <string name="maximo">20</string>
+    <string name="minimo">10</string>
+    <string name="maximo">40</string>
 
-    <bool name="suma">false</bool>
-    <bool name="resta">false</bool>
+    <bool name="suma">true</bool>
+    <bool name="resta">true</bool>
     <bool name="multiplicacion">false</bool>
     <bool name="division">false</bool>
+    <bool name="sumaDEF">true</bool>
+    <bool name="restaDEF">true</bool>
+    <bool name="multiplicacionDEF">false</bool>
+    <bool name="divisionDEF">false</bool>
 
     <string name="acertadas_juego">Acertadas -> %d</string>
     <string name="falladas_juego">Falladas -> %d</string>

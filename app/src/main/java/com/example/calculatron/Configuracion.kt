@@ -4,12 +4,9 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.widget.TextView
 import androidx.preference.PreferenceManager
 import com.example.calculatron.databinding.ActivityConfiguracionBinding
-import org.w3c.dom.Text
 
 class Configuracion : AppCompatActivity() {
     private lateinit var bind : ActivityConfiguracionBinding
@@ -21,12 +18,12 @@ class Configuracion : AppCompatActivity() {
 
         sp = PreferenceManager.getDefaultSharedPreferences(this)
 
-        var tiempo = sp.getString("cuenta_atras","0")
+        var tiempo = sp.getString("cuenta_atras","25")
         bind.cuenta.setText(tiempo)
         var min = sp.getString("minimo","0")
         bind.min.setText(min)
         var max = sp.getString("maximo","20")
-        bind.min.setText(max)
+        bind.max.setText(max)
 
         var suma = sp.getBoolean("suma",false)
         bind.suma.isChecked = suma
@@ -45,10 +42,19 @@ class Configuracion : AppCompatActivity() {
         var cuenta = bind.cuenta.text.toString()
         var min = bind.min.text.toString()
         var max = bind.max.text.toString()
+        if (min >= max){
+            min = "0"
+        }
         var suma = bind.suma.isChecked
         var resta = bind.resta.isChecked
         var multi = bind.multi.isChecked
         var divi = bind.div.isChecked
+        if (!suma && !resta && !multi && !divi){
+            suma = true
+            bind.suma.isChecked = true
+            resta = true
+            bind.resta.isChecked = true
+        }
 
         sp.edit().apply{
             putString("cuenta_atras",cuenta)

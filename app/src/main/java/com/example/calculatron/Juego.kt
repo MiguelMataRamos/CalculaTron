@@ -8,6 +8,8 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.preference.PreferenceManager
 import com.example.calculatron.databinding.ActivityJuegoBinding
+import java.util.Random
+
 
 class Juego : AppCompatActivity() {
     private lateinit var countDownTimer: CountDownTimer
@@ -18,11 +20,35 @@ class Juego : AppCompatActivity() {
     private var acertadas = 0
     private var falladas = 0
     private var contadorempezado = false
+
+    private lateinit var operaciones : MutableList<String>
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
+        sp = PreferenceManager.getDefaultSharedPreferences(this)
         super.onCreate(savedInstanceState)
+
+        operaciones = mutableListOf()
+
+        var suma = sp.getBoolean("suma",true)
+        if (suma){
+            operaciones.add("+")
+        }
+        var resta = sp.getBoolean("resta",true)
+        if (resta){
+            operaciones.add("-")
+        }
+        var multi = sp.getBoolean("multiplicacion",true)
+        if (multi){
+            operaciones.add("*")
+        }
+        var divi = sp.getBoolean("division",true)
+        if (divi){
+            operaciones.add("/")
+        }
+
         bind = ActivityJuegoBinding.inflate(layoutInflater)
         setContentView(bind.root)
-        sp = PreferenceManager.getDefaultSharedPreferences(this)
 
         contador = sp.getString("cuenta_atras", "20")!!.toInt()
         bind.textContador.text = contador.toString()
@@ -30,6 +56,7 @@ class Juego : AppCompatActivity() {
 
         bind.textoAcertadas.text = getString(R.string.acertadas_juego, acertadas)
         bind.textoFalladas.text = getString(R.string.falladas_juego, falladas)
+
 
         //Contador
         countDownTimer = object : CountDownTimer(contadormili.toLong(), 1000) {
@@ -46,9 +73,35 @@ class Juego : AppCompatActivity() {
             }
         }
 
-
+        generarOperacion()
 
     }
+
+    private fun generarOperacion(){
+
+        val random = Random()
+        var operacion = operaciones.random()
+
+        val min = sp.getString("minimo","0")!!.toInt()
+        val max = sp.getString("maximo","100")!!.toInt()
+
+        val n1 = random.nextInt(max-min)+min
+        val n2 = random.nextInt(max-min)+min
+
+        var res = n1.toString() + operacion + n2.toString()
+
+        var res2 = getString(R.string.operacion_actual,res)
+
+        sp.edit().apply {
+            putString("operacion_actual",res2)
+            apply()
+        }
+
+        bind.operacionActual.text = sp.getString("operacion_actual",res2)
+
+    }
+
+
 
     fun ajustes(view: View) {
         var intent = Intent(this, Configuracion::class.java)
@@ -124,6 +177,7 @@ class Juego : AppCompatActivity() {
                     contadorempezado = true
                 }
 
+
             }
 
             R.id.bc -> {
@@ -137,6 +191,8 @@ class Juego : AppCompatActivity() {
             }
         }
     }
+
+
 
 
 }
