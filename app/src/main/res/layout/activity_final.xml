@@ -7,96 +7,92 @@
     tools:context=".Final">
 
     <TextView
-        android:id="@+id/texto_partidaanterior"
+        android:id="@+id/texto_partida"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Partida anterior"
-        android:gravity="center"
-        android:textSize="30sp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:padding="15dp"
         android:layout_marginTop="20dp"
-        />
+        android:gravity="center"
+        android:padding="15dp"
+        android:text="Partida"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/texto_acertadas"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:id="@+id/texto_acertadas_anterior"
-        android:text="Acertadas: "
-        app:layout_constraintTop_toBottomOf="@id/texto_partidaanterior"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/texto_falladas_anterior"
-        android:gravity="center"
         android:layout_marginStart="20dp"
-        />
+        android:gravity="center"
+        android:text="@string/acertadas_juegoDEF"
+        app:layout_constraintEnd_toStartOf="@id/texto_falladas"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/texto_partida" />
+
     <TextView
+        android:id="@+id/texto_falladas"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:id="@+id/texto_falladas_anterior"
-        android:text="Falladas: "
-        app:layout_constraintTop_toBottomOf="@id/texto_partidaanterior"
-        app:layout_constraintStart_toEndOf="@id/texto_acertadas_anterior"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:gravity="center"
         android:layout_marginEnd="20dp"
-        />
+        android:gravity="center"
+        android:text="@string/falladas_juegoDEF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/texto_acertadas"
+        app:layout_constraintTop_toBottomOf="@id/texto_partida" />
+
+
     <TextView
+        android:id="@+id/porcentaje"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/porcentaje_anterior"
-        app:layout_constraintTop_toBottomOf="@+id/texto_acertadas_anterior"
-        android:text="Porcentaje aciertos :  %"
-        android:gravity="center"
         android:layout_margin="15dp"
-        />
+        android:gravity="center"
+        android:text="@string/porcentaje"
+        app:layout_constraintTop_toBottomOf="@+id/texto_acertadas" />
 
 
     <TextView
         android:id="@+id/texto_total"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Total"
-        android:gravity="center"
-        android:textSize="30sp"
-        app:layout_constraintTop_toBottomOf="@id/porcentaje_anterior"
-        app:layout_constraintStart_toStartOf="parent"
-        android:padding="15dp"
         android:layout_marginTop="60dp"
-        />
+        android:gravity="center"
+        android:padding="15dp"
+        android:text="Total"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/porcentaje" />
 
     <TextView
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
         android:id="@+id/texto_acertadas_total"
-        android:text="Acertadas: "
-        app:layout_constraintTop_toBottomOf="@id/texto_total"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/texto_falladas_anterior"
-        android:gravity="center"
-        android:layout_marginStart="20dp"
-        />
-    <TextView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:id="@+id/texto_falladas_total"
-        android:text="Falladas: "
-        app:layout_constraintTop_toBottomOf="@id/texto_total"
-        app:layout_constraintStart_toEndOf="@id/texto_acertadas_total"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="20dp"
         android:gravity="center"
-        android:layout_marginEnd="20dp"
-        />
+        android:text="@string/acertadas_totalDEF"
+        app:layout_constraintEnd_toStartOf="@id/texto_falladas"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/texto_total" />
+
     <TextView
+        android:id="@+id/texto_falladas_total"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:gravity="center"
+        android:text="@string/falladas_totalDEF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/texto_acertadas_total"
+        app:layout_constraintTop_toBottomOf="@id/texto_total" />
+
+    <TextView
+        android:id="@+id/porcentaje_total"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/porcentaje_total"
-        app:layout_constraintTop_toBottomOf="@+id/texto_acertadas_total"
-        android:text="Porcentaje aciertos :  %"
-        android:gravity="center"
         android:layout_margin="15dp"
-        />
-
+        android:gravity="center"
+        android:text="@string/porcentaje_total"
+        app:layout_constraintTop_toBottomOf="@+id/texto_acertadas_total" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

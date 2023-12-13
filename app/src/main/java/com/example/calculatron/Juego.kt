@@ -19,6 +19,8 @@ class Juego : AppCompatActivity() {
     private var contadormili = contador * 1000
     private var acertadas = 0
     private var falladas = 0
+    private var acertadastotal = 0
+    private var falladastotal = 0
     private var contadorempezado = false
 
     private lateinit var operaciones: MutableList<String>
@@ -54,8 +56,11 @@ class Juego : AppCompatActivity() {
         bind.textContador.text = contador.toString()
         contadormili = contador * 1000
 
-        bind.textoAcertadas.text = getString(R.string.acertadas_juegoDEF, acertadas)
+        bind.textoAcertadas.text = getString(R.string.acertadas_juegoDEF,acertadas)
         bind.textoFalladas.text = getString(R.string.falladas_juegoDEF, falladas)
+
+        acertadastotal = sp.getInt("acertadas_total",0)
+        falladastotal = sp.getInt("falladas_total",0)
 
 
         //Contador
@@ -68,14 +73,24 @@ class Juego : AppCompatActivity() {
             override fun onFinish() {
                 // Acciones a realizar cuando el contador llega a cero
                 bind.textContador.text = "0"
+                acertadastotal += acertadas
+                falladastotal += falladas
+                sp.edit().apply{
+                    putInt("acertadas_actual",acertadas)
+                    putInt("falladas_actual",falladas)
+                    putInt("acertadas_total",acertadastotal)
+                    putInt("falladas_total",falladastotal)
+                    apply()
+                }
                 var intent = Intent(applicationContext, Final::class.java)
                 startActivity(intent)
             }
         }
-        bind.operacionActual.text = generarOperacion()
-        siguienteOperacion()
+        rotacion()
 
     }
+
+
 
     private fun generarOperacion(): String {
 
@@ -132,13 +147,16 @@ class Juego : AppCompatActivity() {
         siguienteOperacion()
     }
 
-    private fun comprobarResultado(op: String, res: Int): Boolean {
+    private fun comprobarResultado(operacion: String, respuesta: Int): Boolean {
         var numeros: List<String>
         var total: Int = 0
+        var op = operacion.replace("=","")
 
         if (op.contains("+")) {
             numeros = op.split("+")
-            total = numeros[0].toInt() + numeros[1].toInt()
+            var n1 = numeros[0].toInt()
+            var n2 = numeros[1].toInt()
+            total = n1 + n2
         }
 
         if (op.contains("-")) {
@@ -158,14 +176,14 @@ class Juego : AppCompatActivity() {
 
         var iguales = false
 
-        if (res == total){
+        if (respuesta == total){
             acertadas++
+            bind.textoAcertadas.text = getString(R.string.acertadas_juegoDEF, acertadas)
+            iguales = true
         }else{
             falladas++
+            bind.textoFalladas.text = getString(R.string.falladas_juegoDEF, falladas)
         }
-
-        bind.textoAcertadas.text = getString(R.string.acertadas_juegoDEF, acertadas)
-        bind.textoFalladas.text = getString(R.string.falladas_juegoDEF, falladas)
 
         return iguales
 
@@ -174,6 +192,7 @@ class Juego : AppCompatActivity() {
 
     fun ajustes(view: View) {
         var intent = Intent(this, Configuracion::class.java)
+        countDownTimer.cancel()
         startActivity(intent)
     }
 
@@ -246,8 +265,10 @@ class Juego : AppCompatActivity() {
                     contadorempezado = true
                 }
                 if (!bind.respuesta.text.isNullOrBlank()){
+                    var respuesta = bind.respuesta.text.toString().toInt()
+                    var operacion = bind.operacionActual.text.toString()
+                    comprobarResultado(operacion,respuesta)
                     rotacion()
-
 
 
                     bind.respuesta.text = null
@@ -258,8 +279,11 @@ class Juego : AppCompatActivity() {
 
             R.id.bc -> {
                 var respuesta = bind.respuesta.text.toString()
-                respuesta = respuesta.substring(0, respuesta.length - 1)
-                bind.respuesta.text = respuesta
+                if (!respuesta.isNullOrBlank()){
+                    respuesta = respuesta.substring(0, respuesta.length - 1)
+                    bind.respuesta.text = respuesta
+                }
+
             }
 
             R.id.bce -> {

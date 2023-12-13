@@ -17,11 +17,14 @@
     <string name="falladas_juegoDEF">Falladas -> %d</string>
     <integer name="acertadas_juego"></integer>
     <integer name="falladas_juego"></integer>
+    <string name="acertadas_totalDEF">Acertadas -> %d</string>
+    <string name="falladas_totalDEF">Falladas -> %d</string>
+    <integer name="acertadas_total"></integer>
+    <integer name="falladas_total"></integer>
+    <string name="porcentaje">Porcentaje aciertos : %d</string>
+    <string name="porcentaje_total">Porcentaje aciertos : %d</string>
 
-    <string name="acertadas_anterior"></string>
-    <string name="falladas_anterior"></string>
-    <string name="acertadas_actual"></string>
-    <string name="falladas_actual"></string>
+
     <string name="operacion_anterior">Operacion anterior</string>
     <string name="operacion_actual">%s = </string>
     <string name="siguiente_operacion">Siguiente operacion</string>
