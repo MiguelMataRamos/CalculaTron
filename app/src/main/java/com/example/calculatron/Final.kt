@@ -22,18 +22,18 @@ class Final : AppCompatActivity() {
         var acertadas = sp.getInt("acertadas_actual",0)
         var falladas = sp.getInt("falladas_actual",0)
         var cantidad = acertadas + falladas
-        var porcentaje = acertadas/cantidad * 100
+        var porcentaje = acertadas.toDouble() / cantidad.toDouble() * 100
         bind.textoAcertadas.text = getString(R.string.acertadas_juegoDEF,acertadas)
         bind.textoFalladas.text = getString(R.string.falladas_juegoDEF,falladas)
-        bind.porcentaje.text = getString(R.string.porcentaje,porcentaje)
+        bind.porcentaje.text = getString(R.string.porcentaje,porcentaje.toInt())
 
         var acertadastotal = sp.getInt("acertadas_total",0)
         var falladastotal = sp.getInt("falladas_total",0)
         var cantidadtotal = acertadastotal + falladastotal
-        var porcentajetotal : Int = acertadastotal / cantidadtotal * 100
+        var porcentajetotal = acertadastotal.toDouble() / cantidadtotal.toDouble() * 100
         bind.textoAcertadasTotal.text = getString(R.string.acertadas_totalDEF,acertadastotal)
         bind.textoFalladasTotal.text = getString(R.string.falladas_totalDEF,falladastotal)
-        bind.porcentajeTotal.text = getString(R.string.porcentaje_total,porcentajetotal)
+        bind.porcentajeTotal.text = getString(R.string.porcentaje_total,porcentajetotal.toInt())
     }
 
     override fun onBackPressed() {
