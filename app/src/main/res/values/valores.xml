@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="cuenta_atras">25</string>
-    <string name="minimo">10</string>
-    <string name="maximo">40</string>
+    <string name="minimo">0</string>
+    <string name="maximo">20</string>
 
     <bool name="suma">true</bool>
     <bool name="resta">true</bool>

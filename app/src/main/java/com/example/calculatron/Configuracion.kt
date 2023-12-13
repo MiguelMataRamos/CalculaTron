@@ -25,9 +25,9 @@ class Configuracion : AppCompatActivity() {
         var max = sp.getString("maximo","20")
         bind.max.setText(max)
 
-        var suma = sp.getBoolean("suma",false)
+        var suma = sp.getBoolean("suma",true)
         bind.suma.isChecked = suma
-        var resta = sp.getBoolean("resta",false)
+        var resta = sp.getBoolean("resta",true)
         bind.resta.isChecked = resta
         var multi = sp.getBoolean("multiplicacion",false)
         bind.multi.isChecked = multi
@@ -42,7 +42,7 @@ class Configuracion : AppCompatActivity() {
         startActivity(intent)
     }
 
-    fun Guardar(view: View) {
+    fun guardar(view: View) {
 
         var cuenta = bind.cuenta.text.toString()
         var min = bind.min.text.toString()

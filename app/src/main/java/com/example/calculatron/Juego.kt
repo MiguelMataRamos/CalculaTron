@@ -40,11 +40,11 @@ class Juego : AppCompatActivity() {
         if (resta) {
             operaciones.add("-")
         }
-        var multi = sp.getBoolean("multiplicacion", true)
+        var multi = sp.getBoolean("multiplicacion", false)
         if (multi) {
             operaciones.add("*")
         }
-        var divi = sp.getBoolean("division", true)
+        var divi = sp.getBoolean("division", false)
         if (divi) {
             operaciones.add("/")
         }
@@ -86,7 +86,11 @@ class Juego : AppCompatActivity() {
                 startActivity(intent)
             }
         }
-        rotacion()
+
+        operacionActual()
+        siguienteOperacion()
+        bind.operacionActual.text = generarOperacion() + "="
+
 
         if (bind.textContador.text == "0"){
             recreate()
@@ -101,7 +105,7 @@ class Juego : AppCompatActivity() {
         var operacion = operaciones.random()
 
         val min = sp.getString("minimo", "0")!!.toInt()
-        val max = sp.getString("maximo", "100")!!.toInt()
+        val max = sp.getString("maximo", "20")!!.toInt()
 
         val n1 = random.nextInt(max - min) + min
         val n2 = random.nextInt(max - min) + min
