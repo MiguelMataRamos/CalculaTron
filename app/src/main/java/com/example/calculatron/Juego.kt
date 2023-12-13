@@ -88,6 +88,9 @@ class Juego : AppCompatActivity() {
         }
         rotacion()
 
+        if (bind.textContador.text == "0"){
+            recreate()
+        }
     }
 
 
@@ -264,13 +267,12 @@ class Juego : AppCompatActivity() {
                     countDownTimer.start()
                     contadorempezado = true
                 }
+
                 if (!bind.respuesta.text.isNullOrBlank()){
                     var respuesta = bind.respuesta.text.toString().toInt()
                     var operacion = bind.operacionActual.text.toString()
                     comprobarResultado(operacion,respuesta)
                     rotacion()
-
-
                     bind.respuesta.text = null
                 }
 

@@ -37,6 +37,11 @@ class Configuracion : AppCompatActivity() {
 
     }
 
+    override fun onBackPressed() {
+        var intent = Intent(this,Juego::class.java)
+        startActivity(intent)
+    }
+
     fun Guardar(view: View) {
 
         var cuenta = bind.cuenta.text.toString()
