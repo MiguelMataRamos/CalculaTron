@@ -36,5 +36,10 @@ class Final : AppCompatActivity() {
         bind.porcentajeTotal.text = getString(R.string.porcentaje_total,porcentajetotal)
     }
 
+    override fun onBackPressed() {
+        var intent = Intent(this,Juego::class.java)
+        startActivity(intent)
+    }
+
 
 }
