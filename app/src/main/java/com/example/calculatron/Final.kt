@@ -34,9 +34,6 @@ class Final : AppCompatActivity() {
         bind.textoAcertadasTotal.text = getString(R.string.acertadas_totalDEF,acertadastotal)
         bind.textoFalladasTotal.text = getString(R.string.falladas_totalDEF,falladastotal)
         bind.porcentajeTotal.text = getString(R.string.porcentaje_total,porcentajetotal)
-
-
-
     }
 
 
