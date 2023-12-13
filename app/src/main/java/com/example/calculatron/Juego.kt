@@ -271,7 +271,12 @@ class Juego : AppCompatActivity() {
                 if (!bind.respuesta.text.isNullOrBlank()){
                     var respuesta = bind.respuesta.text.toString().toInt()
                     var operacion = bind.operacionActual.text.toString()
-                    comprobarResultado(operacion,respuesta)
+
+                    if (comprobarResultado(operacion,respuesta)){
+                        bind.operacionAnterior.setTextColor(getColor(R.color.green))
+                    }else{
+                        bind.operacionAnterior.setTextColor(getColor(R.color.red))
+                    }
                     rotacion()
                     bind.respuesta.text = null
                 }
