@@ -97,6 +97,10 @@ class Juego : AppCompatActivity() {
         }
     }
 
+    override fun onBackPressed() {
+        var intent = Intent(this,MainActivity::class.java)
+        startActivity(intent)
+    }
 
 
     private fun generarOperacion(): String {
