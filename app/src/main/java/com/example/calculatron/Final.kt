@@ -21,14 +21,16 @@ class Final : AppCompatActivity() {
 
         var acertadas = sp.getInt("acertadas_actual",0)
         var falladas = sp.getInt("falladas_actual",0)
-        var porcentaje = (acertadas + falladas) / 2
+        var cantidad = acertadas + falladas
+        var porcentaje = acertadas / cantidad * 100
         bind.textoAcertadas.text = getString(R.string.acertadas_juegoDEF,acertadas)
         bind.textoFalladas.text = getString(R.string.falladas_juegoDEF,falladas)
         bind.porcentaje.text = getString(R.string.porcentaje,porcentaje)
 
         var acertadastotal = sp.getInt("acertadas_total",0)
         var falladastotal = sp.getInt("falladas_total",0)
-        var porcentajetotal = (acertadastotal + falladastotal) / 2
+        var cantidadtotal = acertadastotal + falladastotal
+        var porcentajetotal = acertadastotal / cantidadtotal * 100
         bind.textoAcertadasTotal.text = getString(R.string.acertadas_totalDEF,acertadastotal)
         bind.textoFalladasTotal.text = getString(R.string.falladas_totalDEF,falladastotal)
         bind.porcentajeTotal.text = getString(R.string.porcentaje_total,porcentajetotal)
