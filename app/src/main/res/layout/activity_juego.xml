@@ -100,7 +100,9 @@
         android:layout_marginTop="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/operacion_siguiente">
+        app:layout_constraintTop_toBottomOf="@id/operacion_siguiente"
+        android:background="@color/black50"
+        >
 
         <Button
             android:id="@+id/b7"
